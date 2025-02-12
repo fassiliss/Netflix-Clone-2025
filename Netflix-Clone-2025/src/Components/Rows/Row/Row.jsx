@@ -2,6 +2,8 @@ import React from 'react'
 import { useEffect, useState  } from 'react';
 import "./Row.css"
 import axios from "../../../utils/axios"
+import movieTrailer from "movie-trailer"
+import YouTube from "react-youtube";
 
 
 
@@ -29,13 +31,13 @@ const Row = ({title, fetchUrl, isLargeRow}) => {
 
         })()
     }, [fetchUrl]);
-
-    const handleClickl = (movie) => {
+ 
+   const handleClickl = (movie) => {
         if (trailerUrl) {
             setTrailerUrl('')
         } else {
             movieTrailer(movie?.title || movie?.name || movie?.original_name)
-            .them((url) => {
+            .then((url) => {
                 console.log(url)
                 const urlParams = new URLSearchParams(new URL(url).Search)
                 console.log(urlParams)
@@ -46,13 +48,13 @@ const Row = ({title, fetchUrl, isLargeRow}) => {
         }
     }
 
-    const opts = {
-        hight: '390',
+     const opts = {
+         hight: '390',
         width: "100%",
         playerVars: {
-            autoplay: 1,
-        }
-    }
+          autoplay: 1,
+         },
+     }
 
    return (
     <div className="row">
