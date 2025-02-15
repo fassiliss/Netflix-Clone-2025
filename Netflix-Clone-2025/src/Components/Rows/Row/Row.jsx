@@ -21,7 +21,7 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
       } catch (error) {
         console.log("error", error);
       }
-    })()
+    })();
   }, [fetchUrl]);
 
   const handleClick = (movie) => {
@@ -31,7 +31,7 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
       movieTrailer(movie?.title || movie?.name || movie?.original_name).then(
         (url) => {
           console.log(url);
-          const urlParams = new URLSearchParams(new URL(url).Search);
+          const urlParams = new URLSearchParams(new URL(url).search);
           console.log(urlParams);
           console.log(urlParams.get("v"));
           setTrailerUrl(urlParams.get("v"));
@@ -41,12 +41,12 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
   };
 
   const opts = {
-    hight: '390',
-    width: '100%',
+    hight: "390",
+    width: "100%",
     playerVars: {
       autoplay: 1,
     },
-  }
+  };
 
   return (
     <div className="row">
