@@ -4,7 +4,7 @@ import requests from "../../../utils/requests"
 
 const RowList = () => {
   return (
-    <>
+    <>  
       <Row
         title="NETFLIX ORIGINALS"
         fetchUrl={requests.fetchNetflixOriginals}
